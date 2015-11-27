@@ -1,0 +1,5 @@
+# We need this conflict because we are moving stuff.
+smistrip: conflicts-with-version libsmi2ldbl *
+
+# Don't have time to work on those issues.
+smistrip: hyphen-used-as-minus-sign *

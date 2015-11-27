@@ -1,0 +1,2 @@
+debian/tmp/usr/lib/*/libsmi.so.*
+debian/smi.conf etc

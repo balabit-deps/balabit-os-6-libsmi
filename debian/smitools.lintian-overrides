@@ -1,0 +1,5 @@
+# We need this conflict because we are moving stuff.
+smitools: conflicts-with-version libsmi2ldbl *
+
+# Don't have time to work on those issues.
+smitools: hyphen-used-as-minus-sign *

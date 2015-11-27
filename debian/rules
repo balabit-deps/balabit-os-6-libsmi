@@ -1,0 +1,28 @@
+#!/usr/bin/make -f
+#-*- makefile -*-
+
+%:
+	dh $@ --with autoreconf
+
+override_dh_auto_test:
+	# Don't do that.
+
+# Don't ship smistrip in smitools package
+override_dh_install-arch:
+	dh_install -a
+	rm debian/smitools/usr/bin/smistrip
+	rm debian/smitools/usr/share/man/man1/smistrip.1*
+
+# Allow to invoke manual pages by function names
+override_dh_installman-arch:
+	dh_installman -a
+	cd debian/libsmi2-dev/usr/share/man/man3 ; \
+	for i in *.3; do for j in `cat $$i | \
+		awk 'BEGIN { output=0 } ($$NF == "COPIES") { output=1-output ; next } (output == 1 && $$1 ~ /^smi/) { print $$0 }' | \
+		sed 's/,$$//'`; do \
+		ln -sf $$i $$j.3 ; \
+	done ; done
+
+# Our debug package is libsmi2-dbg and it's for libsmi2ldbl only
+override_dh_strip:
+	dh_strip -plibsmi2ldbl --dbg-package=libsmi2-dbg

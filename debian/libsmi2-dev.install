@@ -1,0 +1,6 @@
+debian/tmp/usr/lib/*/libsmi.a
+debian/tmp/usr/lib/*/libsmi.so
+debian/tmp/usr/share/man/man3/*
+debian/tmp/usr/include/*.h
+debian/tmp/usr/share/aclocal/*.m4
+debian/tmp/usr/lib/*/pkgconfig/*.pc

@@ -1,0 +1,118 @@
+Source: libsmi
+Priority: optional
+Maintainer: Vincent Bernat <bernat@debian.org>
+Build-Depends: flex, bison, debhelper (>= 9), dh-autoreconf
+Section: libs
+Standards-Version: 3.9.5
+Homepage: http://www.ibr.cs.tu-bs.de/projects/libsmi/
+Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/libsmi.git
+Vcs-Git: git://anonscm.debian.org/collab-maint/libsmi.git
+
+Package: smitools
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Conflicts: libsmi2ldbl (<= 0.4.8+dfsg2-4)
+Replaces: libsmi2ldbl (<= 0.4.8+dfsg2-4)
+Description: various tools operating on MIB module files
+ This package includes the following tools:
+   * smidiff: check differences between a pair of SMI or SPPI modules
+   * smiquery: query single information from SMI MIB modules
+   * smilint: syntax and semantic checks of SMIv1/v2 and SPPI modules
+   * smicache: caching method for use with libsmi
+   * smixlate: translate SMI/SPPI identifiers
+   * smidump: dump SMI or SPPI modules in various formats
+ .
+ You may also be interested by smistrip which is provided by smistrip
+ package.
+
+Package: smistrip
+Architecture: all
+Depends: ${misc:Depends}
+Conflicts: libsmi2ldbl (<= 0.4.8+dfsg2-1)
+Replaces: libsmi2ldbl (<= 0.4.8+dfsg2-1)
+Description: extract MIB from text files like RFC
+ The smistrip program is used to extract MIB and PIB module files from
+ ASCII documents like RFCs or Internet Drafts. Modules are identified
+ by a starting ASN.1 DEFINITIONS clause and the matching END
+ clause. The output is written to files named by the modules' names.
+
+Package: libsmi2ldbl
+Architecture: any
+Multi-Arch: same
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Conflicts: libsmi0, libsmi1, libsmi2
+Replaces: libsmi0, libsmi1, libsmi2
+Suggests: snmp-mibs-downloader
+Description: library to access SMI MIB information 
+ The purpose of libsmi is to 
+   * give network management applications a concise programmer-friendly
+     interface to access MIB module information, 
+   * separate the knowledge on SMI from the main parts of management 
+     applications, 
+   * allow to add new kinds of MIB repositories without the need to adapt 
+     applications that make use of libsmi. 
+ .
+ In this context, MIB is "Management Information Base" and SMI stands for
+ "Structure and identification of Management Information". See RFC1902 and
+ others for details.
+ .
+ This package contains the main libsmi library.
+
+Package: libsmi2-dev
+Architecture: any
+Depends: libsmi2ldbl (= ${binary:Version}), ${misc:Depends}
+Provides: libsmi-dev
+Conflicts: libsmi-dev
+Replaces: libsmi2ldbl (<< 0.4.8)
+Section: libdevel
+Description: library to access SMI MIB information - development files
+ These are the files needed to compile programs using libsmi.
+ .
+ The purpose of libsmi is to 
+   * give network management applications a concise programmer-friendly
+     interface to access MIB module information, 
+   * separate the knowledge on SMI from the main parts of management 
+     applications, 
+   * allow to add new kinds of MIB repositories without the need to adapt 
+     applications that make use of libsmi. 
+ .
+ In this context, MIB is "Management Information Base" and SMI stands for
+ "Structure and identification of Management Information". See RFC1902 and
+ others for details.
+ .
+ This package contains development files for libsmi library.
+
+Package: libsmi2-dbg
+Architecture: any
+Depends: libsmi2ldbl (= ${binary:Version}), ${misc:Depends}
+Multi-Arch: same
+Section: debug
+Priority: extra
+Description: library to access SMI MIB information - debugging symbols
+ These are the files needed to compile programs using libsmi.
+ .
+ The purpose of libsmi is to 
+   * give network management applications a concise programmer-friendly
+     interface to access MIB module information, 
+   * separate the knowledge on SMI from the main parts of management 
+     applications, 
+   * allow to add new kinds of MIB repositories without the need to adapt 
+     applications that make use of libsmi. 
+ .
+ In this context, MIB is "Management Information Base" and SMI stands for
+ "Structure and identification of Management Information". See RFC1902 and
+ others for details.
+ .
+ This package contains debugging symbols for libsmi.
+
+Package: libsmi2-common
+Architecture: all
+Depends: ${misc:Depends}
+Suggests: snmp-mibs-downloader
+Section: oldlibs
+Priority: extra
+Description: library to access SMI MIB information - MIB module files
+ This is just a transitional package to suggest snmp-mibs-downloader
+ which should download needed MIB. You can delete it if you already
+ have snmp-mibs-downloader.
